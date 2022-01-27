@@ -5,6 +5,9 @@ import knex from 'knex';
 import { handleAddClass } from './controllers/classes/addClass.js';
 import { handleUpdateClass } from './controllers/classes/updateClass.js';
 import { handleDeleteClass } from './controllers/classes/deleteClass.js';
+import { handleAddCountry } from './controllers/countries/addCountry.js';
+import { handleUpdateCountry } from './controllers/countries/updateCountry.js';
+import { handleDeleteCountry } from './controllers/countries/deleteCountry.js';
 
 // This is for local development. Connected to local db.
 const db = knex({
@@ -36,6 +39,17 @@ app.get('/', (req, res) => {
     res.send('Welcome to root.'); 
 });
 
+// Classes end-points
+app.post('/classes', (req, res) => { handleAddClass(req, res, db) })
+app.put('/classes/:id', (req, res) => { handleUpdateClass(req, res, db) })
+app.delete('/classes/:id', (req, res) => { handleDeleteClass(req, res, db) })
+
+// Countries end-points
+app.post('/Countries', (req, res) => { handleAddCountry(req, res, db) })
+app.put('/Countries/:id', (req, res) => { handleUpdateCountry(req, res, db) })
+app.delete('/Countries/:id', (req, res) => { handleDeleteCountry(req, res, db) })
+
+// Students end-points
 app.post('/classes', (req, res) => { handleAddClass(req, res, db) })
 app.put('/classes/:id', (req, res) => { handleUpdateClass(req, res, db) })
 app.delete('/classes/:id', (req, res) => { handleDeleteClass(req, res, db) })
