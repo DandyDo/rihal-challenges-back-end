@@ -3,8 +3,8 @@ import 'dotenv/config';
 import cors from 'cors';
 import knex from 'knex';
 import { handleAddClass } from './controllers/classes/addClass.js';
-
-console.log('this is the port', process.env.LPORT)
+import { handleUpdateClass } from './controllers/classes/updateClass.js';
+import { handleDeleteClass } from './controllers/classes/deleteClass.js';
 
 // This is for local development. Connected to local db.
 const db = knex({
@@ -37,8 +37,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/classes', (req, res) => { handleAddClass(req, res, db) })
-app.delete('/classes/:id', (req, res) => { })
-app.put('/classes/:id', (req, res) => { })
+app.put('/classes/:id', (req, res) => { handleUpdateClass(req, res, db) })
+app.delete('/classes/:id', (req, res) => { handleDeleteClass(req, res, db) })
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
