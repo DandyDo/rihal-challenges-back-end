@@ -2,6 +2,7 @@ import express from 'express';
 // import 'dotenv/config';
 import cors from 'cors';
 import knex from 'knex';
+import typeParser from 'pg';
 import { handleGetClasses } from './controllers/classes/getClasses.js';
 import { handleGetCountries } from './controllers/countries/getCountries.js';
 import { handleGetStudents } from './controllers/students/getStudents.js';
@@ -16,6 +17,10 @@ import { handleUpdateStudent } from './controllers/students/updateStudent.js';
 import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 
 
+const { types } = typeParser;
+// override parsing date column to Date()
+types.setTypeParser(1082, val => val)
+
 // This is for local development. Connected to local db.
 // const db = knex({
 //     client: 'pg',
@@ -24,7 +29,8 @@ import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 //       port : process.env.LPORT,
 //       user : process.env.USERNAME,
 //       password : process.env.PASSWORD,
-//       database : 'rihal'
+//       database : 'rihal',
+//       dateStrings: true
 //     }
 //   });
 
@@ -34,7 +40,8 @@ const db = knex({
       connectionString: process.env.DATABASE_URL,
       ssl: { // NOT SECURE should be set to true but currently using free version of Heroku
         rejectUnauthorized: false
-      }
+      },
+      dateStrings: true
     }
 });
 

@@ -1,7 +1,7 @@
 export const handleGetCountries = (res, db) => {
     db.transaction(trx => {
-        trx.select()
-        .table('countries')
+        trx.select('*')
+        .from('countries')
         .then(countries => res.json(countries))
         .catch(trx.rollback);
     })

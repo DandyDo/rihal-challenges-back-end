@@ -1,7 +1,7 @@
 export const handleGetStudents = (res, db) => {
     db.transaction(trx => {
-        trx.select()
-        .table('students')
+        trx.select('*')
+        .from('students')
         .then(students => res.json(students))
         .catch(trx.rollback);
     })
