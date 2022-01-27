@@ -16,7 +16,6 @@ import { handleAddstudent } from './controllers/students/addStudent.js';
 import { handleUpdateStudent } from './controllers/students/updateStudent.js';
 import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 
-
 const { types } = typeParser;
 // override parsing date column to Date()
 types.setTypeParser(1082, val => val)
@@ -38,16 +37,14 @@ const db = knex({
     client: 'pg',
     connection: {
       connectionString: process.env.DATABASE_URL,
-      ssl: { // NOT SECURE should be set to true but currently using free version of Heroku
-        rejectUnauthorized: false
-      },
+      ssl: true,
       dateStrings: true
     }
 });
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('Welcome to root.'); 
