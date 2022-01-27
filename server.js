@@ -1,17 +1,19 @@
 import express from 'express';
+import 'dotenv/config';
 import cors from 'cors';
 import knex from 'knex';
 import { handleAddClass } from './controllers/classes/addClass.js';
 
+console.log('this is the port', process.env.LPORT)
 
 // This is for local development. Connected to local db.
 const db = knex({
     client: 'pg',
     connection: {
       host : '127.0.0.1',
-      port : 3306,
-      user : 'your_database_user',
-      password : 'your_database_password',
+      port : process.env.LPORT,
+      user : process.env.USERNAME,
+      password : process.env.PASSWORD,
       database : 'rihal'
     }
   });
