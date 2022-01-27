@@ -47,9 +47,9 @@ app.get('/', (req, res) => {
 });
 
 // GETs
-app.get('/classes', (req, res) => { handleGetClasses(req, res, db) });
-app.get('/countries', (req, res) => { handleGetCountries(req, res, db) });
-app.get('/students', (req, res) => { handleGetStudents(req, res, db) });
+app.get('/classes', (req, res) => { handleGetClasses(res, db) });
+app.get('/countries', (req, res) => { handleGetCountries(res, db) });
+app.get('/students', (req, res) => { handleGetStudents(res, db) });
 
 // Classes end-points
 app.post('/classes', (req, res) => { handleAddClass(req, res, db) })
