@@ -1,0 +1,30 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "This is the back-end part of the rihal's fullstack challenge. Using Node.js, Express.js, Postgresql, and Knex.js. Deployed on Heroku.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DandyDo/rihal-challenges-back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DandyDo/rihal-challenges-back-end/issues"
+  },
+  "homepage": "https://github.com/DandyDo/rihal-challenges-back-end#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "knex": "^1.0.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
