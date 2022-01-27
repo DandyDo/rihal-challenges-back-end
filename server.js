@@ -8,6 +8,10 @@ import { handleDeleteClass } from './controllers/classes/deleteClass.js';
 import { handleAddCountry } from './controllers/countries/addCountry.js';
 import { handleUpdateCountry } from './controllers/countries/updateCountry.js';
 import { handleDeleteCountry } from './controllers/countries/deleteCountry.js';
+import { handleAddstudent } from './controllers/students/addStudent.js';
+import { handleUpdateStudent } from './controllers/students/updateStudent.js';
+import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
+
 
 // This is for local development. Connected to local db.
 const db = knex({
@@ -50,9 +54,9 @@ app.put('/Countries/:id', (req, res) => { handleUpdateCountry(req, res, db) })
 app.delete('/Countries/:id', (req, res) => { handleDeleteCountry(req, res, db) })
 
 // Students end-points
-app.post('/classes', (req, res) => { handleAddClass(req, res, db) })
-app.put('/classes/:id', (req, res) => { handleUpdateClass(req, res, db) })
-app.delete('/classes/:id', (req, res) => { handleDeleteClass(req, res, db) })
+app.post('/students', (req, res) => { handleAddstudent(req, res, db) })
+app.put('/students/:id', (req, res) => { handleUpdateStudent(req, res, db) })
+app.delete('/students/:id', (req, res) => { handleDeleteStudent(req, res, db) })
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
