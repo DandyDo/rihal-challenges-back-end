@@ -2,6 +2,9 @@ import express from 'express';
 // import 'dotenv/config';
 import cors from 'cors';
 import knex from 'knex';
+import { handleGetClasses } from './controllers/classes/getClasses.js';
+import { handleGetCountries } from './controllers/countries/getCountries.js';
+import { handleGetStudents } from './controllers/students/getStudents.js';
 import { handleAddClass } from './controllers/classes/addClass.js';
 import { handleUpdateClass } from './controllers/classes/updateClass.js';
 import { handleDeleteClass } from './controllers/classes/deleteClass.js';
@@ -43,15 +46,20 @@ app.get('/', (req, res) => {
     res.send('Welcome to root.'); 
 });
 
+// GETs
+app.get('/classes', (req, res) => { handleGetClasses(req, res, db) });
+app.get('/countries', (req, res) => { handleGetCountries(req, res, db) });
+app.get('/students', (req, res) => { handleGetStudents(req, res, db) });
+
 // Classes end-points
 app.post('/classes', (req, res) => { handleAddClass(req, res, db) })
 app.put('/classes/:id', (req, res) => { handleUpdateClass(req, res, db) })
 app.delete('/classes/:id', (req, res) => { handleDeleteClass(req, res, db) })
 
 // Countries end-points
-app.post('/Countries', (req, res) => { handleAddCountry(req, res, db) })
-app.put('/Countries/:id', (req, res) => { handleUpdateCountry(req, res, db) })
-app.delete('/Countries/:id', (req, res) => { handleDeleteCountry(req, res, db) })
+app.post('/countries', (req, res) => { handleAddCountry(req, res, db) })
+app.put('/countries/:id', (req, res) => { handleUpdateCountry(req, res, db) })
+app.delete('/countries/:id', (req, res) => { handleDeleteCountry(req, res, db) })
 
 // Students end-points
 app.post('/students', (req, res) => { handleAddstudent(req, res, db) })
