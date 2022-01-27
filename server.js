@@ -14,26 +14,26 @@ import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 
 
 // This is for local development. Connected to local db.
-const db = knex({
-    client: 'pg',
-    connection: {
-      host : '127.0.0.1',
-      port : process.env.LPORT,
-      user : process.env.USERNAME,
-      password : process.env.PASSWORD,
-      database : 'rihal'
-    }
-  });
-
 // const db = knex({
 //     client: 'pg',
 //     connection: {
-//       connectionString: process.env.DATABASE_URL,
-//       ssl: { // NOT SECURE should be set to true but currently using free version of Heroku
-//         rejectUnauthorized: false
-//       }
+//       host : '127.0.0.1',
+//       port : process.env.LPORT,
+//       user : process.env.USERNAME,
+//       password : process.env.PASSWORD,
+//       database : 'rihal'
 //     }
-// });
+//   });
+
+const db = knex({
+    client: 'pg',
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { // NOT SECURE should be set to true but currently using free version of Heroku
+        rejectUnauthorized: false
+      }
+    }
+});
 
 const app = express();
 app.use(express.json());
