@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import knex from 'knex';
 
 const db = knex({
