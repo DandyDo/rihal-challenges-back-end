@@ -19,6 +19,7 @@ import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.options('*', cors());
 
 const { types } = typeParser;
 // override parsing date column to Date()
