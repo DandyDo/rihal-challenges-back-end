@@ -16,6 +16,9 @@ import { handleAddstudent } from './controllers/students/addStudent.js';
 import { handleUpdateStudent } from './controllers/students/updateStudent.js';
 import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 const { types } = typeParser;
 // override parsing date column to Date()
@@ -42,11 +45,6 @@ const db = knex({
       }
     }
 });
-
-const app = express();
-
-app.use(cors());
-app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('Welcome to Groot.'); 
