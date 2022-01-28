@@ -16,6 +16,7 @@ import { handleAddstudent } from './controllers/students/addStudent.js';
 import { handleUpdateStudent } from './controllers/students/updateStudent.js';
 import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 
+<<<<<<< Updated upstream
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -25,6 +26,8 @@ const { types } = typeParser;
 // override parsing date column to Date()
 types.setTypeParser(1082, val => val)
 
+=======
+>>>>>>> Stashed changes
 // This is for local development. Connected to local db.
 // const db = knex({
 //     client: 'pg',
@@ -46,6 +49,14 @@ const db = knex({
       }
     }
 });
+
+const { types } = typeParser;
+// override parsing date column to Date()
+types.setTypeParser(1082, val => val)
+
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Welcome to Groot.'); 
@@ -72,5 +83,5 @@ app.put('/students/:id', (req, res) => { handleUpdateStudent(req, res, db) })
 app.delete('/students/:id', (req, res) => { handleDeleteStudent(req, res, db) })
 
 app.listen(process.env.PORT || 3000, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+    console.log(`Server is running on port ${process.env.PORT ? process.env.PORT : 3000}`);
 });
