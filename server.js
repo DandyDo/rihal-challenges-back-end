@@ -16,18 +16,6 @@ import { handleAddstudent } from './controllers/students/addStudent.js';
 import { handleUpdateStudent } from './controllers/students/updateStudent.js';
 import { handleDeleteStudent } from './controllers/students/deleteStudent.js';
 
-<<<<<<< Updated upstream
-const app = express();
-app.use(express.json());
-app.use(cors());
-app.options('*', cors());
-
-const { types } = typeParser;
-// override parsing date column to Date()
-types.setTypeParser(1082, val => val)
-
-=======
->>>>>>> Stashed changes
 // This is for local development. Connected to local db.
 // const db = knex({
 //     client: 'pg',
